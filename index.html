@@ -165,6 +165,14 @@ body.edit-mode .edit-toggle{border-color:var(--accent);color:var(--accent);}
 .add-cat-input::placeholder{color:var(--muted);}
 .add-cat-btn{background:var(--surface3);border:1px solid var(--accent);border-radius:8px;color:var(--accent);font-family:'DM Sans',sans-serif;font-size:0.8rem;padding:7px 13px;cursor:pointer;white-space:nowrap;}
 
+/* ── BACKUP / RESTORE ── */
+.backup-section{margin:16px 16px 0;}
+.backup-title{font-family:'Bebas Neue',sans-serif;font-size:0.82rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;}
+.backup-btns{display:flex;gap:9px;}
+.backup-btn{flex:1;padding:12px;border-radius:var(--radius);border:1px solid #2a2a2a;background:var(--surface2);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:border-color 0.2s,background 0.2s;}
+.backup-btn:active{background:var(--surface3);}
+.backup-btn.primary{border-color:var(--accent);color:var(--accent);}
+.backup-btn.danger{border-color:var(--danger);color:var(--danger);}
 /* ── DURATION HISTORY ── */
 .dur-plan-block{margin:14px 16px 0;}
 .dur-plan-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
@@ -222,6 +230,47 @@ body.edit-mode .edit-toggle{border-color:var(--accent);color:var(--accent);}
 .timer-start-btn{flex:1;padding:10px;border-radius:99px;border:none;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;cursor:pointer;background:var(--accent);color:#0d0d0d;transition:opacity 0.2s;}
 .timer-start-btn.running{background:var(--danger);color:#fff;}
 .timer-start-btn:active{opacity:0.8;}
+/* rest timer */
+.rest-bar{flex-shrink:0;overflow:hidden;max-height:0;transition:max-height 0.3s ease;background:var(--surface2);border-bottom:1px solid #1a1a1a;}
+.rest-bar.open{max-height:60px;}
+.rest-bar-inner{display:flex;align-items:center;gap:10px;padding:8px 16px;}
+.rest-label{font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
+.rest-display{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;min-width:48px;transition:color 0.3s;}
+.rest-display.urgent{color:var(--danger);}
+.rest-skip-btn{background:none;border:1px solid #333;border-radius:99px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.72rem;padding:5px 12px;cursor:pointer;white-space:nowrap;}
+.rest-skip-btn:active{background:var(--surface3);}
+/* rest button on exercise */
+.rest-btn{display:none;background:none;border:1px solid #333;border-radius:6px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.68rem;padding:3px 8px;cursor:pointer;white-space:nowrap;margin-left:6px;flex-shrink:0;}
+.rest-btn:active{border-color:var(--accent);color:var(--accent);}
+/* show rest btn when workout timer is running */
+body.workout-running .rest-btn{display:block;}
+/* schedule */
+.sched-section{margin:14px 16px 0;}
+.sched-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.sched-title{font-family:'Bebas Neue',sans-serif;font-size:0.85rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
+.sched-select-row{display:flex;gap:8px;align-items:center;margin-bottom:12px;}
+.sched-select{flex:1;background:var(--surface3);border:1px solid #2a2a2a;border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.85rem;padding:9px 11px;outline:none;}
+.sched-card{background:var(--surface2);border-radius:var(--radius);margin-bottom:8px;padding:14px 16px;}
+.sched-card-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sched-days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+.sched-day-col{display:flex;flex-direction:column;align-items:center;gap:5px;}
+.sched-day-label{font-size:0.58rem;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;}
+.sched-day-slot{width:100%;aspect-ratio:1;border-radius:7px;border:1px solid #2a2a2a;background:var(--surface3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:var(--muted);transition:all 0.15s;position:relative;overflow:hidden;}
+.sched-day-slot.has-plan{border-color:transparent;}
+.sched-day-actions{display:flex;gap:7px;margin-top:10px;}
+.sched-action-btn{background:var(--surface3);border:1px solid #2a2a2a;border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.7rem;padding:6px 11px;cursor:pointer;}
+.sched-action-btn.active-sched{border-color:var(--accent);color:var(--accent);}
+.sched-action-btn.danger{border-color:var(--danger);color:var(--danger);}
+.add-sched-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px 16px 0;background:none;border:1px dashed #2a2a2a;border-radius:var(--radius);width:calc(100% - 32px);padding:12px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
+/* calendar planned dots */
+.cal-day-dots{display:flex;gap:2px;justify-content:center;flex-wrap:wrap;margin-top:1px;}
+.cal-plan-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.cal-day{flex-direction:column;gap:1px;font-size:0.68rem;}
+/* rest timer edit on exercise item */
+.rest-input{display:none;background:var(--surface3);border:1px solid var(--accent);border-radius:6px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.78rem;padding:3px 8px;width:60px;outline:none;margin-left:6px;flex-shrink:0;}
+.rest-input.visible{display:block;}
+body.edit-mode .rest-btn-edit{display:block;}
+.rest-btn-edit{display:none;background:var(--surface3);border:1px solid #333;border-radius:6px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.68rem;padding:3px 7px;cursor:pointer;white-space:nowrap;margin-left:6px;flex-shrink:0;}
 /* delete cat button on cat-checkbox in edit */
 .cat-checkbox-wrap{position:relative;display:inline-flex;align-items:center;}
 .cat-del-btn{display:none;position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;background:var(--danger);border:none;color:#fff;font-size:0.6rem;cursor:pointer;align-items:center;justify-content:center;line-height:1;}
@@ -289,6 +338,14 @@ body.edit-mode .edit-toggle{border-color:var(--accent);color:var(--accent);}
     <span class="timer-display" id="timerDisplay">00:00</span>
     <button class="timer-start-btn" id="timerBtn">Start Workout</button>
   </div>
+  <div class="rest-bar" id="restBar">
+    <div class="rest-bar-inner">
+      <span class="rest-label">Rest</span>
+      <span class="rest-display" id="restDisplay">00:00</span>
+      <span style="flex:1;font-size:0.72rem;color:var(--muted);font-style:italic;" id="restExName"></span>
+      <button class="rest-skip-btn" id="restSkipBtn">Skip ✕</button>
+    </div>
+  </div>
   <div class="workout-scroll" id="workoutScroll">
     <div class="edit-banner">✏️ Edit mode — type a number next to each exercise to set its order, tap weight to edit, ✕ to remove, + to add.</div>
     <div id="allDoneBanner" class="all-done-banner">
@@ -331,6 +388,16 @@ body.edit-mode .edit-toggle{border-color:var(--accent);color:var(--accent);}
     <p>Create and manage your training plans</p>
   </div>
   <div class="plans-scroll" id="plansListScroll">
+    <div class="sched-section">
+      <div class="sched-title-row">
+        <span class="sched-title">Schedules</span>
+        <button class="add-sched-btn" id="addSchedBtn" style="margin:0;width:auto;border:none;padding:4px 10px;font-size:0.7rem;">+ New</button>
+      </div>
+      <div id="schedCardsList"></div>
+    </div>
+    <div class="sched-section" style="border-top:1px solid #1e1e1e;padding-top:14px;margin-top:14px;">
+      <div class="sched-title" style="margin-bottom:10px;">Plans</div>
+    </div>
     <div id="planCardsList"></div>
     <button class="add-plan-btn" id="addPlanBtn">+ New Plan</button>
     <div class="new-plan-form" id="newPlanForm">
@@ -446,6 +513,14 @@ body.edit-mode .edit-toggle{border-color:var(--accent);color:var(--accent);}
         <div class="cal-nav"><button id="calPrev">‹</button><button id="calNext">›</button></div>
       </div>
       <div class="cal-grid" id="calGrid"></div>
+    </div>
+    <div class="backup-section">
+      <div class="backup-title">Data Backup</div>
+      <div class="backup-btns">
+        <button class="backup-btn primary" id="exportBtn">⬇ Export</button>
+        <button class="backup-btn" id="importBtn">⬆ Import</button>
+      </div>
+      <input type="file" id="importFile" accept=".json" style="display:none"/>
     </div>
     <div class="section-sm"><div class="section-title-sm">Workout Duration</div></div>
     <div id="durationStats"></div>
@@ -568,12 +643,20 @@ function avgPlanTime(planId) {
   return arr.reduce((s,e)=>s+e.ms,0)/arr.length;
 }
 
+function setNavLock(locked) {
+  ['planPrev','planNext'].forEach(id=>{
+    const btn = document.getElementById(id);
+    if(btn) btn.style.opacity = locked ? '0.2' : '';
+  });
+}
 function startTimer() {
   timerStart = Date.now();
   timerRunning = true;
   document.getElementById('timerBtn').textContent = 'End Workout';
   document.getElementById('timerBtn').classList.add('running');
   document.getElementById('timerDisplay').classList.add('running');
+  setNavLock(true);
+  document.body.classList.add('workout-running');
   timerInterval = setInterval(()=>{
     document.getElementById('timerDisplay').textContent = fmtTime(Date.now()-timerStart);
   }, 1000);
@@ -590,6 +673,8 @@ function stopTimer() {
   document.getElementById('timerBtn').classList.remove('running');
   document.getElementById('timerDisplay').classList.remove('running');
   document.getElementById('timerDisplay').textContent = '00:00';
+  setNavLock(false);
+  document.body.classList.remove('workout-running');
   alert('Workout done! Duration: ' + fmtTime(elapsed));
 }
 document.getElementById('timerBtn').addEventListener('click', ()=>{
@@ -755,6 +840,45 @@ function exitFlatView(slide) {
 }
 
 // ════════════════════════════════════════════════════
+// REST TIMER
+// ════════════════════════════════════════════════════
+let restInterval = null;
+let restRemaining = 0;
+
+function fmtRestSecs(s){ const m=Math.floor(s/60); return m>0?m+'m'+(s%60?String(s%60).padStart(2,'0')+'s':''):s+'s'; }
+
+function startRestTimer(secs, exName) {
+  if(restInterval) clearInterval(restInterval);
+  restRemaining = secs;
+  document.getElementById('restExName').textContent = exName;
+  document.getElementById('restBar').classList.add('open');
+  updateRestDisplay();
+  restInterval = setInterval(()=>{
+    restRemaining--;
+    if(restRemaining <= 0){
+      clearInterval(restInterval); restInterval = null;
+      document.getElementById('restBar').classList.remove('open');
+      // small vibrate if supported
+      if(navigator.vibrate) navigator.vibrate([200,100,200]);
+    } else {
+      updateRestDisplay();
+    }
+  }, 1000);
+}
+
+function updateRestDisplay(){
+  const el = document.getElementById('restDisplay');
+  const m = Math.floor(restRemaining/60), s = restRemaining%60;
+  el.textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  el.classList.toggle('urgent', restRemaining <= 5);
+}
+
+document.getElementById('restSkipBtn').addEventListener('click',()=>{
+  if(restInterval){ clearInterval(restInterval); restInterval=null; }
+  document.getElementById('restBar').classList.remove('open');
+});
+
+// ════════════════════════════════════════════════════
 // PER-PLAN ORDER HELPERS
 // ════════════════════════════════════════════════════
 function getPlanOrder(planId) {
@@ -796,6 +920,9 @@ function makeItem(ex, cat, planId) {
     <span class="exercise-sets">${ex.sets||''}</span>
     <button class="sets-edit-btn" type="button">${ex.sets||'+ sets'}</button>
     <input class="sets-inline-input" value="${ex.sets||''}" maxlength="14" placeholder="e.g. 20×2"/>
+    <button class="rest-btn-edit" type="button" title="Set rest time">⏱${ex.restSecs?fmtRestSecs(ex.restSecs):'rest'}</button>
+    <input class="rest-input" type="number" min="5" max="600" step="5" value="${ex.restSecs||''}" placeholder="sec"/>
+    <button class="rest-btn" type="button" title="Start rest timer">⏱</button>
     <button class="delete-btn" type="button">✕</button>
   `;
 
@@ -825,6 +952,29 @@ function makeItem(ex, cat, planId) {
   }
   setsInput.addEventListener('blur', commitSets);
   setsInput.addEventListener('keydown', e=>{ if(e.key==='Enter') setsInput.blur(); });
+
+  // rest edit
+  const restBtnEdit = item.querySelector('.rest-btn-edit');
+  const restInp = item.querySelector('.rest-input');
+  restBtnEdit.addEventListener('click', e=>{ e.stopPropagation(); restBtnEdit.classList.add('editing'); restInp.classList.add('visible'); restInp.focus(); restInp.select(); });
+  function commitRest(){
+    const val = parseInt(restInp.value);
+    ex.restSecs = (!isNaN(val)&&val>=5) ? val : undefined;
+    restBtnEdit.textContent = '⏱'+(ex.restSecs?fmtRestSecs(ex.restSecs):'rest');
+    restBtnEdit.classList.remove('editing'); restInp.classList.remove('visible');
+    const d=getData(); const found=(d.exercises[cat]||[]).find(x=>x.id===ex.id);
+    if(found){found.restSecs=ex.restSecs; saveData(d);}
+  }
+  restInp.addEventListener('blur', commitRest);
+  restInp.addEventListener('keydown', e=>{ if(e.key==='Enter') restInp.blur(); });
+  restInp.addEventListener('click', e=>e.stopPropagation());
+
+  // rest button (shown during workout)
+  item.querySelector('.rest-btn').addEventListener('click', e=>{
+    e.stopPropagation();
+    const secs = ex.restSecs || 60;
+    startRestTimer(secs, ex.name);
+  });
 
   // delete
   item.querySelector('.delete-btn').addEventListener('click', e=>{
@@ -952,13 +1102,20 @@ function goToPlan(idx, animate=true) {
     if(!moved) return;
     const dx=e.changedTouches[0].clientX-startX, dy=e.changedTouches[0].clientY-startY;
     if(Math.abs(dx)>Math.abs(dy)*1.5 && Math.abs(dx)>50) {
+      if(timerRunning){ return; } // silently block swipe during workout
       if(dx<0) goToPlan(currentPlanIdx+1); else goToPlan(currentPlanIdx-1);
     }
   });
 })();
 
-document.getElementById('planPrev').addEventListener('click',()=>goToPlan(currentPlanIdx-1));
-document.getElementById('planNext').addEventListener('click',()=>goToPlan(currentPlanIdx+1));
+document.getElementById('planPrev').addEventListener('click',()=>{
+  if(timerRunning){ alert('Stop your workout timer before switching plans.'); return; }
+  goToPlan(currentPlanIdx-1);
+});
+document.getElementById('planNext').addEventListener('click',()=>{
+  if(timerRunning){ alert('Stop your workout timer before switching plans.'); return; }
+  goToPlan(currentPlanIdx+1);
+});
 
 // ════════════════════════════════════════════════════
 // PLANS MANAGEMENT PAGE
@@ -1013,6 +1170,7 @@ function renderPlanCards() {
 
     // Open — fix: rebuild workout page so new plan slides exist
     card.querySelector('.plan-action-btn.go').addEventListener('click',()=>{
+      if(timerRunning){ alert('Stop your workout timer before switching plans.'); return; }
       currentPlanIdx=planIdx;
       renderWorkoutPage();
       switchTab('workout');
@@ -1309,8 +1467,21 @@ function renderCalendar() {
   for(let day=1;day<=days;day++){
     const ds=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
     const el=document.createElement('div'); el.className='cal-day'; el.textContent=day;
-    if(ds>today) el.classList.add('future');
-    else {
+    if(ds>today){
+      el.classList.add('future');
+      // show planned plan dots for future days
+      const dateObj=new Date(calYear,calMonth,day);
+      const plannedIds=getPlansForDate(dateObj);
+      if(plannedIds.length){
+        const dotsWrap=document.createElement('div'); dotsWrap.className='cal-day-dots';
+        plannedIds.forEach(id=>{
+          const plan=getPlans().find(p=>p.id===id);
+          if(plan){ const d=document.createElement('div'); d.className='cal-plan-dot'; d.style.background=getPlanColour(plan); dotsWrap.appendChild(d); }
+        });
+        el.appendChild(dotsWrap);
+        el.style.opacity='0.7';
+      }
+    } else {
       const colour=getSessionColour(ds);
       if(colour){
         el.classList.add('session-done');
@@ -1534,6 +1705,209 @@ document.getElementById('weightInput').addEventListener('keydown',e=>{
 });
 
 // ════════════════════════════════════════════════════
+// SCHEDULES
+// ════════════════════════════════════════════════════
+const DAYS = ['Mo','Tu','We','Th','Fr','Sa','Su'];
+
+function getSchedules(){ try{ return JSON.parse(localStorage.getItem('schedules')||'[]'); }catch{ return []; } }
+function saveSchedules(s){ localStorage.setItem('schedules',JSON.stringify(s)); }
+function getActiveSchedId(){ return localStorage.getItem('active_sched')||null; }
+function setActiveSchedId(id){ if(id) localStorage.setItem('active_sched',id); else localStorage.removeItem('active_sched'); }
+function getActiveSched(){
+  const id=getActiveSchedId(), schedules=getSchedules();
+  return schedules.find(s=>s.id===id)||null;
+}
+
+// returns array of planIds planned for today (0=Mon...6=Sun)
+function getPlansForToday(){
+  const sched=getActiveSched(); if(!sched) return [];
+  const dow=(new Date().getDay()+6)%7; // 0=Mon
+  return (sched.days[dow]||[]);
+}
+
+// returns planned planIds for a given JS Date
+function getPlansForDate(dateObj){
+  const sched=getActiveSched(); if(!sched) return [];
+  const dow=(dateObj.getDay()+6)%7;
+  return (sched.days[dow]||[]);
+}
+
+function renderSchedules(){
+  const container=document.getElementById('schedCardsList');
+  if(!container) return;
+  container.innerHTML='';
+  const schedules=getSchedules(), plans=getPlans(), activeId=getActiveSchedId();
+  if(!schedules.length){
+    container.innerHTML='<p style="color:var(--muted);font-size:0.78rem;margin:0 0 8px 2px;">No schedules yet.</p>';
+    return;
+  }
+  schedules.forEach((sched,si)=>{
+    const card=document.createElement('div'); card.className='sched-card';
+    // header
+    const nameRow=document.createElement('div'); nameRow.className='sched-card-name';
+    if(sched.id===activeId){
+      const dot=document.createElement('span');
+      dot.style.cssText='width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;';
+      nameRow.appendChild(dot);
+    }
+    nameRow.appendChild(document.createTextNode(sched.name));
+    card.appendChild(nameRow);
+    // 7-day grid
+    const grid=document.createElement('div'); grid.className='sched-days';
+    DAYS.forEach((day,di)=>{
+      const col=document.createElement('div'); col.className='sched-day-col';
+      const lbl=document.createElement('div'); lbl.className='sched-day-label'; lbl.textContent=day;
+      col.appendChild(lbl);
+      // slot - cycle through plans on click
+      const planIds=sched.days[di]||[];
+      const slot=document.createElement('div');
+      slot.className='sched-day-slot'+(planIds.length?' has-plan':'');
+      // show colour dots for assigned plans
+      function renderSlot(){
+        slot.innerHTML='';
+        const ids=sched.days[di]||[];
+        if(!ids.length){ slot.style.background=''; return; }
+        if(ids.length===1){
+          const p=plans.find(p=>p.id===ids[0]);
+          if(p){ slot.style.background=getPlanColour(p)+'33'; slot.style.borderColor=getPlanColour(p); }
+          const abbr=document.createElement('span');
+          abbr.style.cssText='font-size:0.55rem;font-weight:600;color:'+((p&&getPlanColour(p))||'#fff')+';text-align:center;word-break:break-all;line-height:1.1;padding:2px;';
+          abbr.textContent=p?p.name.slice(0,3).toUpperCase():'?';
+          slot.appendChild(abbr);
+        } else {
+          const wrap=document.createElement('div'); wrap.style.cssText='display:flex;flex-wrap:wrap;gap:2px;justify-content:center;align-items:center;padding:3px;';
+          ids.forEach(id=>{ const p=plans.find(p=>p.id===id); if(p){ const d=document.createElement('div'); d.style.cssText='width:6px;height:6px;border-radius:50%;background:'+getPlanColour(p)+';'; wrap.appendChild(d); }});
+          slot.appendChild(wrap); slot.style.background=''; slot.style.borderColor='';
+        }
+      }
+      renderSlot();
+      // tap: open a small picker overlay anchored to the slot
+      slot.addEventListener('click', e=>{
+        e.stopPropagation();
+        // remove any existing picker
+        document.querySelectorAll('.slot-picker').forEach(p=>p.remove());
+        const picker=document.createElement('div');
+        picker.className='slot-picker';
+        picker.style.cssText='position:fixed;z-index:300;background:var(--surface);border:1px solid #333;border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:5px;min-width:140px;box-shadow:0 8px 24px #000a;';
+        // position near slot
+        const rect=slot.getBoundingClientRect();
+        const top=Math.min(rect.bottom+4, window.innerHeight-200);
+        const left=Math.min(rect.left, window.innerWidth-160);
+        picker.style.top=top+'px'; picker.style.left=left+'px';
+        // clear option
+        const clearBtn=document.createElement('button');
+        clearBtn.style.cssText='background:none;border:1px solid #333;border-radius:7px;color:var(--muted);font-family:DM Sans,sans-serif;font-size:0.78rem;padding:7px 10px;cursor:pointer;text-align:left;';
+        clearBtn.textContent='— Clear';
+        clearBtn.addEventListener('click',()=>{ sched.days[di]=[]; saveSchedules(schedules); renderSlot(); renderCalendar(); picker.remove(); });
+        picker.appendChild(clearBtn);
+        // one button per plan
+        plans.forEach(p=>{
+          const btn=document.createElement('button');
+          const assigned=(sched.days[di]||[]).includes(p.id);
+          btn.style.cssText='background:'+(assigned?getPlanColour(p)+'22':'none')+';border:1px solid '+(assigned?getPlanColour(p):'#333')+';border-radius:7px;color:'+(assigned?getPlanColour(p):'var(--text)')+';font-family:DM Sans,sans-serif;font-size:0.78rem;padding:7px 10px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:7px;';
+          const dot=document.createElement('span');
+          dot.style.cssText='width:8px;height:8px;border-radius:50%;background:'+getPlanColour(p)+';flex-shrink:0;';
+          btn.appendChild(dot);
+          btn.appendChild(document.createTextNode(p.name));
+          btn.addEventListener('click',()=>{
+            if(!sched.days[di]) sched.days[di]=[];
+            const idx2=sched.days[di].indexOf(p.id);
+            if(idx2>=0) sched.days[di].splice(idx2,1);
+            else sched.days[di].push(p.id);
+            saveSchedules(schedules);
+            renderSlot();
+            renderCalendar();
+            picker.remove();
+          });
+          picker.appendChild(btn);
+        });
+        document.body.appendChild(picker);
+        // close on outside tap
+        setTimeout(()=>{ document.addEventListener('click', ()=>picker.remove(), {once:true}); }, 50);
+      });
+      col.appendChild(slot);
+      grid.appendChild(col);
+    });
+    card.appendChild(grid);
+    // actions
+    const actions=document.createElement('div'); actions.className='sched-day-actions';
+    const setActiveBtn=document.createElement('button');
+    setActiveBtn.className='sched-action-btn'+(sched.id===activeId?' active-sched':'');
+    setActiveBtn.textContent=sched.id===activeId?'✓ Active':'Set Active';
+    setActiveBtn.addEventListener('click',()=>{ setActiveSchedId(sched.id); renderSchedules(); renderCalendar(); });
+    const delBtn=document.createElement('button');
+    delBtn.className='sched-action-btn danger'; delBtn.textContent='Delete';
+    delBtn.addEventListener('click',()=>{
+      if(!confirm('Delete schedule "'+sched.name+'"?')) return;
+      const arr=getSchedules(); arr.splice(si,1); saveSchedules(arr);
+      if(getActiveSchedId()===sched.id) setActiveSchedId(null);
+      renderSchedules(); renderCalendar();
+    });
+    actions.appendChild(setActiveBtn); actions.appendChild(delBtn);
+    card.appendChild(actions);
+    container.appendChild(card);
+  });
+}
+
+document.getElementById('addSchedBtn').addEventListener('click',()=>{
+  const name=prompt('Schedule name (e.g. "Week A"):');
+  if(!name||!name.trim()) return;
+  const schedules=getSchedules();
+  schedules.push({id:'sched_'+Date.now(), name:name.trim(), days:[[],[],[],[],[],[],[]]});
+  saveSchedules(schedules);
+  renderSchedules();
+});
+
+// ════════════════════════════════════════════════════
+// EXPORT / IMPORT
+// ════════════════════════════════════════════════════
+function exportData() {
+  // collect everything from localStorage
+  const backup = {};
+  for(let i=0; i<localStorage.length; i++){
+    const k = localStorage.key(i);
+    backup[k] = localStorage.getItem(k);
+  }
+  const json = JSON.stringify(backup, null, 2);
+  const blob = new Blob([json], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const date = new Date().toISOString().slice(0,10);
+  a.download = 'gymtracker-backup-'+date+'.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const backup = JSON.parse(e.target.result);
+      if(typeof backup !== 'object' || !backup) throw new Error('Invalid file');
+      if(!confirm('This will overwrite all your current data. Continue?')) return;
+      localStorage.clear();
+      Object.entries(backup).forEach(([k,v]) => localStorage.setItem(k,v));
+      alert('Data restored! The app will now reload.');
+      location.reload();
+    } catch(err) {
+      alert('Could not read backup file. Make sure it is a valid gymtracker backup.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+document.getElementById('exportBtn').addEventListener('click', exportData);
+document.getElementById('importBtn').addEventListener('click', () => {
+  document.getElementById('importFile').click();
+});
+document.getElementById('importFile').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if(file) importData(file);
+  e.target.value = ''; // reset so same file can be re-selected
+});
+
+// ════════════════════════════════════════════════════
 // TAB SWITCHING
 // ════════════════════════════════════════════════════
 function switchTab(tab) {
@@ -1541,7 +1915,7 @@ function switchTab(tab) {
   document.getElementById('page-'+tab).classList.add('active');
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
   if(tab==='stats') renderStats();
-  if(tab==='plans') renderPlanCards();
+  if(tab==='plans'){ renderPlanCards(); renderSchedules(); }
   if(tab==='progress') renderProgressPage();
 }
 document.querySelectorAll('.tab-btn').forEach(btn=>{
